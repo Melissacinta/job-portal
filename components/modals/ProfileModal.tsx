@@ -1,7 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/outline'
 import {
   mdiAccount,
   mdiCity,
@@ -23,8 +22,8 @@ export default function ProfileModal({ open, setOpen }) {
   const continueButtonRef = useRef(null)
   const [activeField, setActiveField] = useState('')
   const [activeDot, setActiveDot] = useState('one')
-  const onChange = (state) => {
-    console.log(state)
+  const handleClose = () => {
+    setOpen(false)
   }
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -32,7 +31,7 @@ export default function ProfileModal({ open, setOpen }) {
         as="div"
         className="fixed inset-0 z-50 overflow-y-auto"
         initialFocus={continueButtonRef}
-        onClose={setOpen}
+        onClose={handleClose}
       >
         <div className="flex items-end justify-center px-4 pt-4 pb-20 text-center  sm:block sm:p-0">
           <Transition.Child
@@ -50,12 +49,12 @@ export default function ProfileModal({ open, setOpen }) {
           <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="mx-auto flex  max-w-[50rem] items-end justify-center px-4 pt-4 pb-20 text-center  sm:block sm:p-0">
               {/* This element is to trick the browser into centering the modal contents. */}
-              <span
+              {/* <span
                 className="hidden sm:inline-block sm:h-screen sm:align-middle"
                 aria-hidden="true"
               >
                 &#8203;
-              </span>
+              </span> */}
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -293,7 +292,7 @@ export default function ProfileModal({ open, setOpen }) {
                         <button
                           type="button"
                           className="inline-flex h-[45px] w-full items-center justify-center rounded-[10px] border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:max-w-[167px] sm:text-sm"
-                          onClick={() => setOpen(false)}
+                          onClick={handleClose}
                           ref={continueButtonRef}
                         >
                           Next
@@ -301,7 +300,7 @@ export default function ProfileModal({ open, setOpen }) {
                         <button
                           type="button"
                           className="mt-3 inline-flex h-[45px] w-full items-center justify-center rounded-[10px] border border-gray-300 bg-[#F5F5F5] px-4 py-2 text-base font-medium text-[#4E5559] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:mt-0 sm:max-w-[167px] sm:text-sm"
-                          onClick={() => setOpen(false)}
+                          onClick={handleClose}
                         >
                           Skip for now
                         </button>

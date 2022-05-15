@@ -5,14 +5,23 @@ import { CheckIcon } from '@heroicons/react/outline'
 
 export default function ConsentModal({ open, setOpen, setOpenProfile }) {
   const continueButtonRef = useRef(null)
+  const handleClose = () => {
+    setOpen(false)
+  }
 
+  const handleClose2 = () => {
+    setOpen(false)
+    setTimeout(() => {
+      setOpenProfile(true)
+    }, 500)
+  }
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
         className="fixed inset-0 z-50 overflow-y-auto"
         initialFocus={continueButtonRef}
-        onClose={setOpen}
+        onClose={handleClose}
       >
         <div className="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
@@ -28,7 +37,7 @@ export default function ConsentModal({ open, setOpen, setOpenProfile }) {
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="mx-auto flex  min-h-[screen] max-w-[490px] items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div className="mx-auto flex  min-h-screen max-w-[490px] items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
               {/* This element is to trick the browser into centering the modal contents. */}
               <span
                 className="hidden sm:inline-block sm:h-screen sm:align-middle"
@@ -67,10 +76,7 @@ export default function ConsentModal({ open, setOpen, setOpenProfile }) {
                     <button
                       type="button"
                       className="inline-flex h-[45px] w-full max-w-[167px] items-center justify-center rounded-[10px] border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:text-sm"
-                      onClick={() => {
-                        setOpen(false)
-                        setOpenProfile(true)
-                      }}
+                      onClick={handleClose2}
                       ref={continueButtonRef}
                     >
                       Continue
@@ -78,7 +84,7 @@ export default function ConsentModal({ open, setOpen, setOpenProfile }) {
                     <button
                       type="button"
                       className="mt-3 inline-flex h-[45px] w-full max-w-[167px] items-center justify-center rounded-[10px] border border-gray-300 bg-[#F5F5F5] px-4 py-2 text-base font-medium text-[#4E5559] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:mt-0 sm:text-sm"
-                      onClick={() => setOpen(false)}
+                      onClick={handleClose}
                     >
                       Not now
                     </button>
