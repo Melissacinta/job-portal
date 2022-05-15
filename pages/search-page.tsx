@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react'
 
 const SearchPage: NextPage = () => {
   const [open, setOpen] = useState(false)
+  const [openProfile, setOpenProfile] = useState(false)
   useEffect(() => {
     setOpen(true)
   }, [])
@@ -48,7 +49,12 @@ const SearchPage: NextPage = () => {
       </main>
       <Footer />
 
-      <ProfileModal open={open} setOpen={setOpen} />
+      <ConsentModal
+        open={open}
+        setOpen={setOpen}
+        setOpenProfile={setOpenProfile}
+      />
+      <ProfileModal open={openProfile} setOpen={setOpenProfile} />
     </>
   )
 }

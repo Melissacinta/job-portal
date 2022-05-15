@@ -3,14 +3,14 @@ import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/outline'
 
-export default function ConsentModal({ open, setOpen }) {
+export default function ConsentModal({ open, setOpen, setOpenProfile }) {
   const continueButtonRef = useRef(null)
 
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 z-10 overflow-y-auto"
+        className="fixed inset-0 z-50 overflow-y-auto"
         initialFocus={continueButtonRef}
         onClose={setOpen}
       >
@@ -67,7 +67,10 @@ export default function ConsentModal({ open, setOpen }) {
                     <button
                       type="button"
                       className="inline-flex h-[45px] w-full max-w-[167px] items-center justify-center rounded-[10px] border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:text-sm"
-                      onClick={() => setOpen(false)}
+                      onClick={() => {
+                        setOpen(false)
+                        setOpenProfile(true)
+                      }}
                       ref={continueButtonRef}
                     >
                       Continue
