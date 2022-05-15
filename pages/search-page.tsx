@@ -33,7 +33,7 @@ const SearchPage: NextPage = () => {
       </Head>
 
       <Header />
-      <main className="bg-[#FAFAFA] scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300">
+      <main className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-4 py-[1.875rem] sm:px-0 md:justify-start ">
           <SearchBar />
           <div className="mt-[0.9375rem] items-start justify-between gap-8 sm:flex">
