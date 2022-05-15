@@ -66,6 +66,9 @@ const Footer = () => {
           ))}
         </div>
       </div>
+      <p className=" px-4 pb-12 text-center text-lg font-normal text-[#979797]">
+        Jobberman 2021. All rights reserved.
+      </p>
     </footer>
   )
 }
